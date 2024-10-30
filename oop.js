@@ -1,43 +1,12 @@
 PRIORITY = { "LOW": 1, "MEDIUM": 3, "HIGH": 5, "URGENT": 7 };
 
-
 function validInteger (value) { // value can be a string or a number (integer)
   
-
   const numberValue = Number(value);
   return Number.isInteger(numberValue) && numberValue >= 0 && String(numberValue) === String(value);
  
 }
-
  
-
-// function validInteger(value) {
-//   if (typeof value === "number" || value < 0) {
-//     return false;
-//   }
-
-//   const stringValue = value.toString();
-
-//   if (stringValue.includes(".")) {
-//     return false;
-//   }
-//   return true;
-// }
-
-
-// function validInteger(value) {
-//   // Convert value to a string
-//   const stringValue = value.toString();
-
-//   // Check if the value is a positive integer string or a positive integer number
-//   if ((typeof value === 'string' && /^[1-9]\d*$/.test(stringValue)) || 
-//       (typeof value === 'number' && Number.isInteger(value) && value > 0)) {
-//     return true;
-//   }
-
-//   return false;
-// }
-
 
 function validatePriority(priority) {
   const validPriority = Object.values(PRIORITY); // Only valid values
@@ -133,8 +102,8 @@ class ToDo extends Task {
     } else {
       // Return only tasks that match the given priority
       return this.tasks
-        .filter((task) => task.getPriority() === priority)
-        .map((task) => [task.getAdded(), task.getTitle(), task.getPriority()]);
+        .filter((task) => task._priority === priority)
+        .map((task) => [task._added, task._title, task._priority]);
     }
   }
 
@@ -150,6 +119,9 @@ class ToDo extends Task {
 
 
 
+// taskList = new ToDo () // Creates an instance of ToDo named taskList
+// taskList.add (Task( 'Get Cappuccino', PRIORITY [ 'HIGH' ]) )  
+// taskList.add (Task( 'Complete Project Sprint', PRIORITY [ 'MEDIUM' ]) )  
 
 
 
@@ -158,11 +130,7 @@ class ToDo extends Task {
 
 
 
-// const taskList = new ToDo() // creates an instance of a ToDo() object name taskList
-// console.log(taskList.add(new Task ('Get Pasta', PRIORITY ['MEDIUM']))) // returns 1 as 1 task in list
-// console.log(taskList.add (new Task ('Get Breakfast Cereal', PRIORITY ['MEDIUM'] ))) // returns 2 as 2 tasks in list
-// // console.log(taskList.remove ('Get Breakfast Cereal')) // returns true (as task exists, and then removes it)
-// console.log(taskList)
+
 
 
 
